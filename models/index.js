@@ -1,20 +1,17 @@
-//const dbConfig = require("../db.config");
+const dbConfig = require("../db.config");
 const Sequelize = require("sequelize");
 
 // Connection to the database.
-const sequelize = new Sequelize({
-    database: "defaultdb",
-    username: "doadmin",
-    password: process.env.DB_PASS,
-    host: process.env.HOST,
-    port: process.env.PORT,
-    dialect: "postgres",
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false
-      }
-    },
+const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
+    host: dbConfig.HOST,
+    dialect: dbConfig.dialect,
+    operatorsAliases: false,
+    pool: {
+        max: dbConfig.pool.max,
+        min: dbConfig.pool.min,
+        acquire: dbConfig.pool.acquire,
+        idle: dbConfig.pool.idle
+    }
 });
 
 sequelize.authenticate()
