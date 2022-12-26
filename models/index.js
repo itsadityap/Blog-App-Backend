@@ -17,8 +17,6 @@ const sequelize = new Sequelize({
     },
 });
 
-//const sequelize = new Sequelize(`postgresql://doadmin:AVNS_K0vNvqFqwCSsHWQHsxn@blogapp-db-do-user-13163027-0.b.db.ondigitalocean.com:25060/defaultdb`, {});
-
 sequelize.authenticate()
 .then(() => {
     console.log('Connected to the database.')
