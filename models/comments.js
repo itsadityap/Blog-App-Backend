@@ -8,7 +8,12 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         },
         user_id: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false
+        },
+        post_id:{
+            type: Sequelize.STRING,
+            allowNull: false
         }
     });
     return comments;

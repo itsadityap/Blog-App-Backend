@@ -5,8 +5,15 @@ const db = require("../models");
 
 const User = db.users;
 
-exports.signup = (req, res) => {
+exports.signup = async (req, res) => {
   // Save User to Database
+  req.body.email = req.body.email.toLowerCase();
+  const user = await User.findOne({ where: { email: req.body.email } });
+
+  if (user) {
+    return res.status(400).send({ message: "User with this email already exists!" });
+  }
+
   User.create({
     user_id: randomID.generateRandomId(),
     name: req.body.name,

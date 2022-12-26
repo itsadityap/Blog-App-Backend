@@ -22,6 +22,7 @@ const getUserByIDRoutes = require('./routes/getUserByID');
 const postRoutes = require('./routes/post');
 const likeRoutes = require('./routes/likePost');
 const unlikeRoutes = require('./routes/unlikePost');
+const commentRoutes = require('./routes/comment');
 
 
 // Implementing Routes.
@@ -30,6 +31,7 @@ app.use('/api/', getUserByIDRoutes)
 app.use('/api/', postRoutes)
 app.use('/api/', likeRoutes)
 app.use('/api/', unlikeRoutes)
+app.use('/api/', commentRoutes)
 
 
 // Starting the server.

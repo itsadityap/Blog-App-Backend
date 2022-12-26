@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
         next();
     } catch (error) {
         return res.status(401).json({
-            message: 'Auth failed!, Login First to Approve Or Request!'
+            message: 'Auth failed!, Login First to Perform the Action!'
         });
     }
 };
