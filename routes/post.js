@@ -5,10 +5,14 @@ const createPostController = require("../controllers/createPost");
 const getpostController = require("../controllers/getPostByID");
 const deletePostController = require("../controllers/deletePostByID");
 const updatePostController = require("../controllers/updatePostByID");
+const getAllPostsController = require("../controllers/getAllPostsByFilters");
 
 router.post('/posts',
              checkAuth
             ,createPost);
+
+router.get('/posts',
+            getAllPosts);
 
 router.get('/posts/:id',
             getPost);
@@ -43,6 +47,13 @@ async function getPost(req, res) {
 async function createPost(req, res) {
     createPostController
         .createPost(req,res)
+        .then((data) => {})
+        .catch((err) => console.log(err));
+}
+
+async function getAllPosts(req, res) {
+    getAllPostsController
+        .getAllPosts(req,res)
         .then((data) => {})
         .catch((err) => console.log(err));
 }

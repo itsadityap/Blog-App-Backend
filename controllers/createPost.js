@@ -25,9 +25,10 @@ async function createPost(req,res)  {
             category: category,
             keywords: keywords,
             user_id:req.userData.id,
-            likes: 0
+            likes: 0,
+            comments_count: 0
         })
-        return res.status(200).json({message: "Post created successfully."})
+        return res.status(200).json({message: "Post created successfully.", post_id: id})
     }
     catch(err)
     {

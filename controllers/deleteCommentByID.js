@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const db = require("../models");
 const Comment = db.comments;
+const Post = db.posts;
 
 async function deleteComment(req,res) {
     const id = req.params.id;
@@ -20,6 +21,9 @@ async function deleteComment(req,res) {
         await comment.destroy({
             where: { comment_id: id }
         })
+        const post = await Post.findByPk(req.body.post_id);
+        await post.decrement('comments_count');
+
         res.status(200).json({message: "Comment deleted successfully."});
     }
     else {

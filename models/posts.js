@@ -16,6 +16,9 @@ module.exports = (sequelize, Sequelize) => {
         keywords: {
             type: Sequelize.STRING
         },
+        comments_count:{
+            type: Sequelize.INTEGER
+        },
         likes: {
             type: Sequelize.INTEGER
         },

@@ -4,7 +4,6 @@ const Post = db.posts;
 async function getPostByID(req,res) {
     const id = req.params.id;
     const post = await Post.findByPk(id);
-    console.log(post);
     if(post) {
         res.status(200).json({
             post_title: post.post_title,

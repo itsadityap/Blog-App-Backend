@@ -6,7 +6,6 @@ const cors = require("cors");
 const port = process.env.SERVER_PORT || 3000;
 
 // Default Middlewares
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
@@ -32,7 +31,9 @@ app.use('/api/', postRoutes)
 app.use('/api/', likeRoutes)
 app.use('/api/', unlikeRoutes)
 app.use('/api/', commentRoutes)
-
+app.get('/', (req, res) => {
+    res.status(200).json({message:"Hello World from Blog API servers, Everything is working fine."});
+});
 
 // Starting the server.
 app.listen(port, () => {

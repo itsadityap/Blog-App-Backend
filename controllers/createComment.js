@@ -26,7 +26,10 @@ async function createComment(req,res)
             user_id: req.userData.id,
             post_id: req.body.post_id
         })
-        return res.status(200).json({message: "Comment created successfully."})
+        const post = await Post.findByPk(req.body.post_id);
+        await post.increment('comments_count');
+
+        return res.status(200).json({message: "Comment created successfully.", comment_id: commentid})
     }
     catch(err)
     {
